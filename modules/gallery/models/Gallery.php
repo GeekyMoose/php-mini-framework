@@ -1,4 +1,5 @@
 <?php
+namespace modules\gallery\models;
 
 /**
  * Gallery is a set of images.
