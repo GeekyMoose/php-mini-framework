@@ -20,6 +20,7 @@ class PDOFactory{
 	 * @throws DatabaseException if unable to connect
 	 */
 	public function __construct(){
+		$this->loadPDO();
 	}
 
 	/**

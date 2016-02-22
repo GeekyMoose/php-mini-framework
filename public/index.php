@@ -28,6 +28,18 @@ foreach($listFiles as $file){
 	}
 }
 
+//@TODO DEBUG
+$lista = scandir(PATH_DATA.'imgs/');
+echo '<pre>';
+var_dump($lista);
+echo '</pre>';
+foreach($lista as $file){
+	if(is_file(PATH_DATA.'imgs/'.$file)){
+		echo $file;
+		echo '</br>';
+	}
+}
+
 //Start!!
 try{
 	$router->run();

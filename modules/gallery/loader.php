@@ -12,8 +12,7 @@ use \modules\gallery\controllers\GalleryController;
 //Display all galleries
 $router->get('/gallery', function(){
 	$controller = new GalleryController();
-	$controller->setView('listGalleries');
-	$controller->getPage()->renderPage();
+	$controller->showGalleries();
 });
 
 //Display one gallery

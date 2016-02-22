@@ -2,7 +2,7 @@
 namespace modules\gallery\controllers;
 
 /**
- * Controller for a Gallery
+ * Controller for a Gallery.
  *
  * @since	Feb 22, 2016
  * @author	Constantin MASSON
@@ -15,5 +15,15 @@ class GalleryController extends \modules\core\controllers\EntityController{
 		parent::__construct('gallery');
 		$factory = new \utils\database\PDOFactory();
 		$this->mapper = $factory->getGalleryMapper();
+	}
+
+
+	// ************************************************************************
+	// Controller functions
+	// ************************************************************************
+	public function showGalleries(){
+		$this->mapper->selectAllGalleries();
+		$this->setView('listGalleries');
+		$this->getPage()->renderPage();
 	}
 }

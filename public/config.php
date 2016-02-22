@@ -12,6 +12,8 @@ define('PATH_BASE', dirname(__FILE__).'/../'); #We are in public folder, not roo
 define('PATH_CSS', '');
 define('PATH_MODULES', PATH_BASE.'modules/');
 
+# Path to data folder
+define('PATH_DATA', '/mnt/diskdata/work/data/wba/');
 
 //db configuration
 $dbconfig = array(
