@@ -24,8 +24,8 @@ class EntityController{
 	/** @var string $module Module of this controller */
 	private $module;
 
-	/** @var Manager $manager Manager for this Controller */
-	private $manager;
+	/** @var Mapper $mapper Mapper for this Controller */
+	private $mapper;
 
 
 	// ************************************************************************

@@ -13,5 +13,7 @@ class GalleryController extends \modules\core\controllers\EntityController{
 	 */
 	public function __construct(){
 		parent::__construct('gallery');
+		$factory = new \utils\database\PDOFactory();
+		$this->mapper = $factory->getGalleryMapper();
 	}
 }
