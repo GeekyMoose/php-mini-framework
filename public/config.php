@@ -5,6 +5,7 @@
  * Since:	Feb 15, 2016
  * Author:	Constantin MASSON
  */
+$DEBUG_MODE=TRUE;
 
 
 # Path configurations
@@ -20,6 +21,6 @@ $dbconfig = array(
 	'host'		=> '127.0.0.1',
 	'user'		=> 'root',
 	'pass'		=> 'root',
-	'dbname'	=> 'websiteanne',
+	'dbname'	=> 'swebsiteanne',
 );
 

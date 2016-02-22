@@ -7,9 +7,10 @@ namespace utils\database;
  * @since	Feb 22, 2016
  * @author	Constantin MASSON
  */
-class PDOFactory{
+class PDOFactory extends \utils\database\DAOFactory{
 	/** @var PDO $pdo Connection Database */
 	private $pdo;
+
 
 	// ************************************************************************
 	// Constructor - Loader
@@ -34,18 +35,21 @@ class PDOFactory{
 			$this->pdo = new \PDO(
 				'mysql:host='.$dbconfig['host'].';dbname='.$dbconfig['dbname'],
 				$dbconfig['user'],
-				$dbconfig['pass']
-			);
+				$dbconfig['pass']);
 			$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-		} catch (Exception $ex){
+		}
+		catch(\PDOException $ex){
 			//@TODO Create log with message
-			throw new DatabaseException("Unable to connect Database");
+			throw new \utils\database\DatabaseException(
+				"Fail to create the connection with database using PDO.
+				Check whether dbconfig are valid, or if database exists."
+			);
 		}
 	}
 
 
 	// ************************************************************************
-	// Manager getters
+	// Mapper' getters
 	// ************************************************************************
 	public function getGalleryMapper(){
 		return new \modules\gallery\mappers\GalleryMapperPDO($this->pdo);

@@ -7,5 +7,5 @@ namespace utils\database;
  * @since	Feb 22, 2016
  * @author	Constantin MASSON
  */
-class DatabaseException extends Exception{
+class DatabaseException extends \Exception{
 }

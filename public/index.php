@@ -19,8 +19,7 @@ $modulesLoader	= new SplClassLoader('modules', __DIR__.'/..');
 $modulesLoader	->register();
 
 //Create router (To do before modules includes) and set Factory
-$router  = new utils\router\Router($_GET['url']);
-$factory = DAOFactory::getFactory(DAOFactory::PDO_DAO);
+$router = new utils\router\Router($_GET['url']);
 
 //Scan modules dir and import each leaders
 $listFiles = scandir(PATH_MODULES);
@@ -36,14 +35,18 @@ foreach($listFiles as $file){
  * If any other error occure, then error page displayed
  */
 try{
+	//Set the used factory
+	$factory = DAOFactory::getFactory(DAOFactory::PDO_DAO);
 	$router->run();
-} catch (\utils\router\RouterException $ex){
+}
+catch (\utils\router\RouterException $ex){
 	$page = new \modules\core\models\Page();
 	$page->setContent(PATH_MODULES.'core/views/error404.phtml');
 	$page->addVar('errorMessage', "Unknown URL");
 	$page->renderPage();
-} catch (Exception $ex){
-	//@TODO Add log with error message (Something went wrong)
+}
+catch (\Exception $ex){
+	if($DEBUG_MODE==TRUE){ die($ex->getMessage()); }
 	$page = new \modules\core\models\Page();
 	$page->setContent(PATH_MODULES.'core/views/error404.phtml');
 	$page->addVar('errorMessage', "Sorry, an error has occured");
