@@ -1,3 +1,14 @@
+<?php 
+/*
+ * Display Error page. Usually occure when unknown route.
+ * Can also be used for unknown error.
+ *
+ * Since:	Feb 22, 2016
+ * Author:	Constantin MASSON
+ */
+$errorMessage = isset($errorMessage) ? $errorMessage : "No message";
+?>
 
 <h1>Error 404</h1>
 <p>Unable to load the page</p>
+<p>Error message: <?php echo "$errorMessage"; ?> </p>
