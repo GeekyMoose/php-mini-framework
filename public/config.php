@@ -21,6 +21,8 @@ $dbconfig = array(
 	'host'		=> '127.0.0.1',
 	'user'		=> 'root',
 	'pass'		=> 'root',
-	'dbname'	=> 'swebsiteanne',
+	'dbname'	=> 'websiteanne',
 );
 
+// Path to the data folder (With images etc)
+$pathfolder = '/mnt/diskdata/work/data/wba/';

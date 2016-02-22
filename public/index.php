@@ -36,7 +36,7 @@ foreach($listFiles as $file){
  */
 try{
 	//Set the used factory
-	$factory = DAOFactory::getFactory(DAOFactory::PDO_DAO);
+	$factory = DAOFactory::getFactory(DAOFactory::FOLDER_DAO);
 	$router->run();
 }
 catch (\utils\router\RouterException $ex){

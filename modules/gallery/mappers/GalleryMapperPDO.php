@@ -7,11 +7,11 @@ namespace modules\gallery\mappers;
  * @since	Feb 22, 2016
  * @author	Constantin MASSON
  */
-class GalleryMapperPDO{
+class GalleryMapperPDO implements \modules\gallery\mappers\iGalleryMapper{
 	private $pdo;
 
 	/**
-	 * Create a PDO mapper for Gallery
+	 * Create a PDO mapper for Gallery. (Note argument is valided from Factory)
 	 *
 	 * @param PDO $pdo DB Connection
 	 */

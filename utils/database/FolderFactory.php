@@ -26,21 +26,15 @@ class FolderFactory extends \utils\database\DAOFactory{
 	 * @param string $path		Path to folder data
 	 * @throws DatabaseException if unable to connect
 	 */
-	public __construct($path){
+	public function __construct(){
+		global $pathfolder;
+		$path = $pathfolder;
 		//Must be a directory
 		if(!is_dir($path)){
 			//@TODO add log
-			throw DatabaseException(
+			throw new \utils\database\DatabaseException(
 				"Unable to create the FolderFactory.
 				Path given is not a folder ($path)"
-			);
-		}
-		//Permission required
-		if(!is_writable($path) || !is_readable($path){
-			//@TODO add log
-			throw DatabaseException(
-				"Unable to create the FolderFactory for path: $path.
-				Write and read write required"
 			);
 		}
 		$this->path = $path;
@@ -51,5 +45,6 @@ class FolderFactory extends \utils\database\DAOFactory{
 	// Mappers' Getters
 	// ************************************************************************
 	public function getGalleryMapper(){
+		return new \modules\gallery\mappers\GalleryMapperFolder.php($this->path);
 	}
 }
