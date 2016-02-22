@@ -2,31 +2,40 @@
 /*
  * Web site entry gate.
  * Load config etc and start render
+ *
+ * Creation Date: Feb 2016
+ * Author: Constantin MASSON
  */
 
 require './config.php';
-
-#Import and start Spl autoloader
 require '../utils/SplClassLoader.php';
 
-echo "DEBUG URI :". $_SERVER['REQUEST_URI'].'</br>';
+#Import and start autoloader for all elements
+$utilsLoader	= new SplClassLoader('utils', __DIR__.'/..');
+$utilsLoader	->register();
 
-#Import utils lib
-$utilsLoader = new SplClassLoader('utils', __DIR__.'/..');
-$utilsLoader->register();
+$modulesLoader	= new SplClassLoader('modules', __DIR__.'/..');
+$modulesLoader	->register();
 
+//Create router (To do before modules includes)
 $router = new utils\router\Router($_GET['url']);
 
-//@TODO Debug version
-$router->get('/post', function(){echo "All articles";});
-$router->get('/post/:id-:slug/', function($id, $slug){echo "articles toto $id - slug: $slug";})->with("id", "[0-9]+");
-$router->get('/post/:id/', function($id){echo "articles $id";});
+//Scan modules dir and import each leaders
+$listFiles = scandir(PATH_MODULES);
+foreach($listFiles as $file){
+	if(is_file(PATH_MODULES.$file.'/loader.php')){
+		require_once PATH_MODULES.$file.'/loader.php';
+	}
+}
 
-
+//Start!!
 try{
 	$router->run();
 } catch (\utils\router\RouterException $ex){
-	echo "</br>RouterException:".$ex->getMessage();
+	$page = new \modules\core\models\Page();
+	$page->setContent(PATH_MODULES.'core/views/error404.phtml');
+	$page->renderPage();
+	//echo "error";
 }
 
 

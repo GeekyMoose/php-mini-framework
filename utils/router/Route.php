@@ -52,7 +52,6 @@ class Route{
 	 * @return true if match, otherwise, return false
 	 */
 	public function match($url){
-		echo "</br>URL: $url - PATH: $this->path - ";
 		$url = trim($url, '/'); //As we did for path, we trim all /
 		//Replace param by a regex (Used later in preg_match)
 		$path = preg_replace_callback('#:([\w]+)#', [$this,'paramMatch'], $this->path);
