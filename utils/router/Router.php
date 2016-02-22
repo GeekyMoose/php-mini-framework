@@ -3,8 +3,11 @@ namespace utils\router;
 use \utils\router\Route;
 
 /**
- * Router for URL rewriting with PHP. 
- * Router has an URL (The current asked by user) and routes.
+ * Router for URL rewriting with PHP.
+ * Router is set with an URL, several routes can be added in router (Usually
+ * the available website routes).
+ *
+ * @since	Feb 22, 2016
  */
 class Router{
 	// ************************************************************************
@@ -18,7 +21,7 @@ class Router{
 	// ************************************************************************
 	// Constructor - Initialization
 	// ************************************************************************
-	/*
+	/**
 	 * Create a new router with an associated url
 	 */
 	public function __construct($url){
@@ -32,10 +35,10 @@ class Router{
 	/**
 	 * Create a new possible path (Using get method)
 	 *
-	 * @param String $path the url to set for this route
-	 * @param String $callable the function to link with this route
-	 * @param String $name name for this route (Optional)
-	 * @return 
+	 * @param String $path		Url to set for this route
+	 * @param String $callable	Function to link with this route
+	 * @param String $name		Route name (Optional)
+	 * @return Route			Added Route
 	 */
 	public function get($path, $callable, $name = null){
 		return $this->addRoute($path, $callable, $name, 'GET');
@@ -44,22 +47,23 @@ class Router{
 	/**
 	 * Create a new possible path (Using post method)
 	 *
-	 * @param String $path the url to set for this route
-	 * @param String $callable the function to link with this route
-	 * @param String $name name for this route (Optional)
-	 * @return 
+	 * @param String $path		Url to set for this route
+	 * @param String $callable	Function to link with this route
+	 * @param String $name		Route name (Optional)
+	 * @return Route			Added Route
 	 */
 	public function post($path, $callable, $name = null){
 		return $this->addRoute($path, $callable, $name, 'POST');
 	}
 
 	/**
-	 * Add a route in the router.
+	 * Add a route in Router.
 	 *
-	 * @param String $path the url to set for this route
-	 * @param String $callable the function to link with this route
-	 * @param String $name name for this route (Optional)
-	 * @param String $method method (GET/POST...) for this route
+	 * @param String $path		Url to set for this route
+	 * @param String $callable	Function to link with this route
+	 * @param String $name		Route name (Optional)
+	 * @param String $method	Route method (GET/POST...)
+	 * @return Route			Added Route
 	 */
 	private function addRoute($path, $callable, $name, $method){
 		$route = new Route($path, $callable);
@@ -74,7 +78,12 @@ class Router{
 	/**
 	 * Start Router. Check if asked route exists.
 	 *
-	 * @throw RouterException if no route match (Or error)
+	 * Check for each route if current Router URL is matched by on route. A 
+	 * request method must be set (GET/POST..). If no route matches,
+	 * and Exception is thrown.
+	 *
+	 * @return mixe				Return callable function value of matched Route
+	 * @throws RouterException	No route match (Or error)
 	 */
 	public function run(){
 		//Request method is required!
@@ -94,10 +103,10 @@ class Router{
 	/**
 	 * Get an named URL and fill with params given
 	 *
-	 * @param String $name URL's name
-	 * @param Array $params Params to apply
-	 * @return Return the URL
-	 * @throws RouteException if named URL doesn't exists
+	 * @param String $name		URL's name
+	 * @param Array $params		Params to apply
+	 * @return string			Return the URL
+	 * @throws RouteException	Named URL doesn't exists
 	 */
 	public function getNamedUrl($name, $params = []){
 		if(!(isset($this->routesNames[$name]))){

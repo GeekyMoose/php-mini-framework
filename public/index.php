@@ -35,7 +35,6 @@ try{
 	$page = new \modules\core\models\Page();
 	$page->setContent(PATH_MODULES.'core/views/error404.phtml');
 	$page->renderPage();
-	//echo "error";
 }
 
 

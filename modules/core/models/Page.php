@@ -1,10 +1,8 @@
 <?php
-
 namespace modules\core\models;
 
-
 /**
- * Page define the main render element
+ * Page define the main render element.
  *
  * @since	Feb 22, 2016
  * @author	Constantin MASSON
@@ -46,7 +44,7 @@ class Page{
 	}
 
 	/**
-	 * Add a new variable to the page
+	 * Add a new variable in Page.
 	 *
 	 * @param String $name	Name of the variable
 	 * @param Mixe $value	Value of the variable
@@ -63,7 +61,7 @@ class Page{
 	// Getters - Setters
 	// ************************************************************************
 	/**
-	 * Set a new content. If content is null, then current one is deleted
+	 * Set a new content. If content is null, then current one is deleted.
 	 *
 	 * @param String $content Path to the content template
 	 */

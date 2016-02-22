@@ -1,10 +1,11 @@
 <?php
 namespace utils\router;
 
-/*
- * Route used by Router
+/**
+ * Route is a possible URL for a website. It might be used with a router. A
+ * Route is set with an URL and a function to execute if route called.
  *
- * @see \utils\router\Router.php
+ * @since	Feb 22, 2016
  */
 class Route{
 	// ************************************************************************
@@ -15,14 +16,15 @@ class Route{
 	private $matches	= [];
 	private $params		= [];
 
+
 	// ************************************************************************
 	// Constructor - Initialization
 	// ************************************************************************
 	/**
 	 * Create a new route with an url and callable function
 	 *
-	 * @param String $path url of this route
-	 * @param String $callable function to call if route is macht
+	 * @param string $path		Url of this route
+	 * @param string $callable	Function to call if route is macht
 	 */
 	public function __construct($path, $callable){
 		$this->path = trim($path, '/'); //We trim all /
@@ -32,9 +34,9 @@ class Route{
 	/**
 	 * Add a constraint for a parameter
 	 *
-	 * @param String $param Param's name to constraint
-	 * @param String $param Regex to apply
-	 * @return Return current Route
+	 * @param string $param		Param's name to constraint
+	 * @param string $regex		Regex to apply
+	 * @return Route			Return current Route
 	 */
 	public function with($param, $regex){
 		//The regex should have '(' or the mathing will faile.
@@ -48,8 +50,8 @@ class Route{
 	/**
 	 * Check if route match the given url.
 	 *
-	 * @param string $url
-	 * @return true if match, otherwise, return false
+	 * @param string $url		Url to match
+	 * @return Boolean			True if match, otherwise, return false
 	 */
 	public function match($url){
 		$url = trim($url, '/'); //As we did for path, we trim all /
@@ -65,9 +67,11 @@ class Route{
 
 	/**
 	 * Process a macht parameter.
-	 * This method is used in order to mach parameters using 'with'
 	 *
-	 * @param Array $match match from preg function
+	 * This method is used in order to mach parameters using 'with'.
+	 *
+	 * @param Array $match	Match from preg function
+	 * @return string		Return a regex catching current param
 	 */
 	private function paramMatch($match){
 		//Remind: match[0] is the param match eltm [1] and [0] is between ()
@@ -80,17 +84,17 @@ class Route{
 	/**
 	 * Call the callable function for this route
 	 *
-	 * @return Returns the return value of the callback, or FALSE on error.
+	 * @return mixed Returns the return value of the callback, or FALSE on error.
 	 */
 	public function call(){
 		return call_user_func_array($this->callable, $this->matches);
 	}
 
 	/**
-	 * Return route URL String filled with parameter given
+	 * Return route URL string filled with parameter given
 	 *
-	 * @param Array $param Parameter for this URL
-	 * @return String Return the URL
+	 * @param Array $param		Parameter for this URL
+	 * @return string			Return the URL
 	 */
 	public function getUrl($param){
 		$path = $this->path;

@@ -1,13 +1,17 @@
 <?php
 
 /**
- * Define an Entity
+ * Define an Entity.
  *
  * @since	Feb 22, 2016
  * @author	Constantin MASSON
  */
 class Entity{
+	/**
+	 * @var int $id Entity ID in db (0 if not in db)
+	 */
 	private $id;
+
 
 	// ************************************************************************
 	// Constructor - Initialization
@@ -25,10 +29,10 @@ class Entity{
 
 
 	/**
-	 * Hydrate Entity
-	 * Array given must fit the setters function. 
-	 * Hydrate will add 'set' before each key element and try to call the fct 
-	 * with 'value' parameter
+	 * Hydrate Entity. Set entity data using array.
+	 *
+	 * Array given must fit the setters function: setters are called using 
+	 * array key name with 'set' before. (And ucfirst)
 	 *
 	 * @param Array $data Array of data to hydrate
 	 */
@@ -46,7 +50,7 @@ class Entity{
 	// Check Functions
 	// ************************************************************************
 	/**
-	 * Check whether this entry is new (New mean id is not set)
+	 * Check whether Entry is new (0 means new)
 	 *
 	 * @return Boolean True if new, otherwise, return false
 	 */
