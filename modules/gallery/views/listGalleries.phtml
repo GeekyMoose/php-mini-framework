@@ -11,5 +11,7 @@
 <?php if(empty($listGalleries)) :?>
 	<p>No gallery</p>
 <?php else: ?>
-	<p>Galleries * * * </p>
+	<?php foreach ($listGalleries as $gallery): ?>
+	<p>Gallery (<?php echo $gallery->getName(); ?>)</p>
+	<?php endforeach; ?>
 <?php endif; ?>

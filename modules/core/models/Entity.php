@@ -1,4 +1,5 @@
 <?php
+namespace modules\core\models;
 
 /**
  * Define an Entity.
@@ -62,10 +63,10 @@ class Entity{
 	// ************************************************************************
 	// Getters - Setters
 	// ************************************************************************
-	public getId(){
+	public function getId(){
 		return $this->id;
 	}
-	public setId($id){
+	public function setId($id){
 		$this->id = $id;
 	}
 }

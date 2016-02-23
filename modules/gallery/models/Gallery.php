@@ -7,7 +7,7 @@ namespace modules\gallery\models;
  * @since	Feb 22, 2016
  * @author	Constantin MASSON
  */
-public class Gallery extends Entity{
+class Gallery extends \modules\core\models\Entity{
 	//*************************************************************************
 	// Attributes
 	//*************************************************************************
