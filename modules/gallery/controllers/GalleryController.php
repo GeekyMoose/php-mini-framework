@@ -27,4 +27,14 @@ class GalleryController extends \modules\core\controllers\EntityController{
 		$this->page->addVar('listGalleries', $listGalleries);
 		$this->page->renderPage();
 	}
+
+	public function showGalleryById($id){
+		$gallery = $this->mapper->selectGalleryById($id);
+		if(empty($gallery)){
+			$this->page->renderErrorPage("Unknown Gallery");
+		}
+		$this->setView('displayGallery');
+		$this->page->addVar('gallery', $gallery);
+		$this->page->renderPage();
+	}
 }

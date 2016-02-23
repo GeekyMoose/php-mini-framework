@@ -41,16 +41,12 @@ try{
 }
 catch (\utils\router\RouterException $ex){
 	$page = new \modules\core\models\Page();
-	$page->setContent(PATH_MODULES.'core/views/error404.phtml');
-	$page->addVar('errorMessage', "Unknown URL");
-	$page->renderPage();
+	$page->renderErrorPage("This URL doesn't exists");
 }
 catch (\Exception $ex){
 	if($DEBUG_MODE==TRUE){ die($ex->getMessage()); }
 	$page = new \modules\core\models\Page();
-	$page->setContent(PATH_MODULES.'core/views/error404.phtml');
-	$page->addVar('errorMessage', "Sorry, an error has occured");
-	$page->renderPage();
+	$page->renderErrorPage("An error has occured, sorry");
 }
 
 

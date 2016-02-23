@@ -16,4 +16,7 @@ $router->get('/gallery', function(){
 });
 
 //Display one gallery
-$router->get('/gallery/:id', function($id){echo "Gallery id: $id";});
+$router->get('/gallery/:id', function($id){
+	$controller = new GalleryController();
+	$controller->showGalleryById($id);
+});

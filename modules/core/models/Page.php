@@ -44,6 +44,17 @@ class Page{
 	}
 
 	/**
+	 * Render an error404 page with optional message. (And exit)
+	 *
+	 * @param string $msg	Message to display (optional)
+	 */
+	public function renderErrorPage($msg = ""){
+		$this->setContent(PATH_MODULES.'core/views/error404.phtml');
+		$this->addVar('errorMessage', $msg);
+		$this->renderPage();
+	}
+
+	/**
 	 * Add a new variable in Page.
 	 *
 	 * @param String $name	Name of the variable

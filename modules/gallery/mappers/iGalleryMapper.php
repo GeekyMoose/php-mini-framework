@@ -16,5 +16,11 @@ interface iGalleryMapper{
 	 */
 	public function selectAllGalleries();
 
-	//public function selectGalleryById();
+	/**
+	 * Get a specific gallery using id
+	 *
+	 * @param int $id	If of gallery to get
+	 * @return Gallery	Gallery (Null if no gallery for this id)
+	 */
+	public function selectGalleryById($id);
 }

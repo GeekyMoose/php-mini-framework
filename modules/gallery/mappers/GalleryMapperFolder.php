@@ -38,6 +38,26 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 		return $listGalleries;
 	}
 
+	public function selectGalleryById($id){
+		//In case of folder, id is just the position in list (Default sort)
+		$currentPos = 0;
+		$scan = preg_grep('#^([^.])#', scandir($this->path));
+		foreach($scan as $file){
+			if(is_dir($this->path.'/'.$file)){
+				$currentPos++;
+				if($currentPos != $id){
+					continue; //If is not this id
+				}
+				$gallery = new \modules\gallery\models\Gallery();
+				$gallery->setId($id);
+				$gallery->setName($file);
+				return $gallery;
+			}
+		}
+		return null; //If we reach here, no gallery for this id
+	}
+
+
 	// ************************************************************************
 	// Inner functions
 	// ************************************************************************

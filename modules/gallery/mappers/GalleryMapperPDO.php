@@ -19,6 +19,10 @@ class GalleryMapperPDO implements \modules\gallery\mappers\iGalleryMapper{
 		$this->pdo = $pdo;
 	}
 
+
+	// ************************************************************************
+	// Override functions
+	// ************************************************************************
 	public function selectAllGalleries(){
 		$listGalleries = [];
 		$request = $this->pdo->query('SELECT * FROM gallery');
@@ -26,5 +30,10 @@ class GalleryMapperPDO implements \modules\gallery\mappers\iGalleryMapper{
 			$listGalleries[] = new Gallery($gallery);
 		}
 		return $listGalleries;
+	}
+
+	public function selectGalleryById($id){
+		//@TODO 
+		return null;
 	}
 }
