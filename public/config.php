@@ -19,7 +19,7 @@ define('PATH_MODULES', PATH_BASE.'modules/');
 // ****************************************************************************
 # Path to data folder, img etc
 define('PATH_DATA', '/mnt/diskdata/work/data/wba/');
-define('PATH_FOLDER_IMG', '/mnt/diskdata/work/data/wba/imgs');
+define('PATH_FOLDER_IMG', '/mnt/diskdata/work/data/wba/imgs/');
 $imgExt = array('jpeg', 'jpg', 'png'); //Write only lowercase
 
 // ****************************************************************************

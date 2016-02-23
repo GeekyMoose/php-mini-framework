@@ -32,7 +32,7 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 				$gallery = new \modules\gallery\models\Gallery();
 				$gallery->setId($id);
 				$gallery->setName($file);
-				$listGalleries[] = $gallery;
+				$listGalleries[] = $gallery; //Note images are not loaded
 			}
 		}
 		return $listGalleries;
@@ -51,6 +51,7 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 				$gallery = new \modules\gallery\models\Gallery();
 				$gallery->setId($id);
 				$gallery->setName($file);
+				$this->loadGalleryImages($gallery);
 				return $gallery;
 			}
 		}
@@ -62,19 +63,34 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 	// Inner functions
 	// ************************************************************************
 	/**
+	 * Load all images for a gallery. (Gallery mustn't be null)
+	 *
+	 * @param Gallery $gallery	Gallery to load
+	 * @return Boolean			True if successfully loaded, otherwise, False
+	 */
+	private function loadGalleryImages($gallery){
+		global $imgExt;
+		$images = $this->scanDirWithExt($gallery->getName(), $imgExt);
+		$gallery->setListImages($images);
+		return True;
+	}
+
+	/**
 	 * Scan dir and return an array with all files with specific extension.
 	 *
 	 * Extensions are given in array parameter. If no parameter given, then
-	 * all extension are accepted.
-	 * Note that . and .. are not included
+	 * all extension are accepted. (. and .. are not include)
+	 * Dir is the path starting after $this->path (We are not allowed to check 
+	 * outside)
 	 *
+	 * @param string $dir			Dir to scan (relativ to gallery path)
 	 * @param array $extensions		Allowed extensions
 	 * @return array				Files found
 	 */
-	private function scanDirWithExt(array $extensions = []){
+	private function scanDirWithExt($dir, array $extensions = []){
 		global $imgExt;
 		$listFiles	= [];
-		$scan		= preg_grep("#^[^.]+#", scandir($this->path));
+		$scan		= preg_grep("#^[^.]+#", scandir($this->path.$dir));
 		//Check for each if extension is allowed
 		foreach($scan as $file){
 			$ext = pathinfo($file, PATHINFO_EXTENSION);

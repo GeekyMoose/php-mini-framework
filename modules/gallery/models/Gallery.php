@@ -47,4 +47,7 @@ class Gallery extends \modules\core\models\Entity{
 	public function setDescription($description){
 		$this->description = $description;
 	}
+	public function setListImages($listImages){
+		$this->listImages = $listImages;
+	}
 }
