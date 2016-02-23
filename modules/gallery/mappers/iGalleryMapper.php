@@ -8,6 +8,7 @@ namespace modules\gallery\mappers;
  * @author	Constantin MASSON
  */
 interface iGalleryMapper{
+
 	/**
 	 * Get all galleries.
 	 *

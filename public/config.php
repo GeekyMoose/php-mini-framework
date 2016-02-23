@@ -13,8 +13,9 @@ define('PATH_BASE', dirname(__FILE__).'/../'); #We are in public folder, not roo
 define('PATH_CSS', '');
 define('PATH_MODULES', PATH_BASE.'modules/');
 
-# Path to data folder
+# Path to data folder, img etc
 define('PATH_DATA', '/mnt/diskdata/work/data/wba/');
+define('PATH_FOLDER_IMG', '/mnt/diskdata/work/data/wba/imgs');
 
 //db configuration
 $dbconfig = array(
@@ -23,6 +24,3 @@ $dbconfig = array(
 	'pass'		=> 'root',
 	'dbname'	=> 'websiteanne',
 );
-
-// Path to the data folder (With images etc)
-$pathfolder = '/mnt/diskdata/work/data/wba/';

@@ -7,7 +7,7 @@ namespace modules\gallery\mappers;
  * @since	Feb 22, 2016
  * @author	Constantin MASSON
  */
-class GalleryMapperFolder extends iGalleryMapper{
+class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 	private $path;
 
 	/**
@@ -15,10 +15,12 @@ class GalleryMapperFolder extends iGalleryMapper{
 	 *
 	 * @param string $path Path to data folder (Valided by Factory)
 	 */
-	public function __constructor($path){
+	public function __construct($path){
 		$this->path = $path;
 	}
 
 	public function selectAllGalleries(){
+		//$scan = scandir($this->path);
+		return null;
 	}
 }

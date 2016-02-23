@@ -13,7 +13,7 @@ class GalleryController extends \modules\core\controllers\EntityController{
 	 */
 	public function __construct(){
 		parent::__construct('gallery');
-		$factory = new \utils\database\PDOFactory();
+		global $factory;
 		$this->mapper = $factory->getGalleryMapper();
 	}
 
@@ -22,8 +22,9 @@ class GalleryController extends \modules\core\controllers\EntityController{
 	// Controller functions
 	// ************************************************************************
 	public function showGalleries(){
-		$this->mapper->selectAllGalleries();
+		$listGalleries = $this->mapper->selectAllGalleries();
 		$this->setView('listGalleries');
-		$this->getPage()->renderPage();
+		$this->page->addVar('listGalleries', $listGalleries);
+		$this->page->renderPage();
 	}
 }

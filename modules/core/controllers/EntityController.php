@@ -16,16 +16,16 @@ class EntityController{
 	// Attributes
 	// ************************************************************************
 	/** @var Page $page Page managed by this controller */
-	private $page;
+	protected $page;
 
 	/** @var string $view Name of the view placed in page */
-	private $view;
+	protected $view;
 
 	/** @var string $module Module of this controller */
-	private $module;
+	protected $module;
 
 	/** @var Mapper $mapper Mapper for this Controller */
-	private $mapper;
+	protected $mapper;
 
 
 	// ************************************************************************

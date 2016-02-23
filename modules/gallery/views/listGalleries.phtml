@@ -1,2 +1,15 @@
+<?php
+/*
+ * Display all the Galleries
+ * Since Feb 22, 2016
+ */
+
+?>
 <h1>Galleries</h1>
 <p>List galleries</p>
+
+<?php if(empty($listGalleries)) :?>
+	<p>No gallery</p>
+<?php else: ?>
+	<p>Galleries * * * </p>
+<?php endif; ?>

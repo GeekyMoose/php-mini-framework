@@ -11,7 +11,7 @@ namespace utils\database;
  */
 class FolderFactory extends \utils\database\DAOFactory{
 	/** @var string $path Path to the data folder root */
-	private $path;
+	private $paths = [];
 
 
 	// ************************************************************************
@@ -27,17 +27,38 @@ class FolderFactory extends \utils\database\DAOFactory{
 	 * @throws DatabaseException if unable to connect
 	 */
 	public function __construct(){
-		global $pathfolder;
-		$path = $pathfolder;
-		//Must be a directory
-		if(!is_dir($path)){
+		//Set each path (General path, imgs path)
+		$this->paths['data'] = PATH_DATA;
+		$this->paths['imgs'] = PATH_FOLDER_IMG;
+
+		//If not valid data base (Folder)
+		if(!$this->isValidDataFolder()){
 			//@TODO add log
 			throw new \utils\database\DatabaseException(
-				"Unable to create the FolderFactory.
-				Path given is not a folder ($path)"
+				"Unable to create the FolderFactory. Path given is not valid.
+				Check the path value in config.php.
+				Usually, data folder must have several specific subfolders."
 			);
 		}
-		$this->path = $path;
+	}
+
+	/**
+	 * Check whether the given path is a falid data folder.
+	 *
+	 * Data folder must, exists First, but must follow a specific architecture.
+	 * For example, data folder can be made of several spec subfolder like 
+	 * /images/ /texts/ etc..
+	 * Note: path is recovered from config (No parameters)
+	 *
+	 * @return Boolean True if valid, otherwise, return false
+	 */
+	private function isValidDataFolder(){
+		foreach($this->paths as $folder){
+			if(!is_dir($folder)){
+				return False;
+			}
+		}
+		return True;
 	}
 
 
@@ -45,6 +66,6 @@ class FolderFactory extends \utils\database\DAOFactory{
 	// Mappers' Getters
 	// ************************************************************************
 	public function getGalleryMapper(){
-		return new \modules\gallery\mappers\GalleryMapperFolder.php($this->path);
+		return new \modules\gallery\mappers\GalleryMapperFolder($this->paths['imgs']);
 	}
 }
