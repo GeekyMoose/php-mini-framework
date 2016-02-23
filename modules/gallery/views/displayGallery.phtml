@@ -7,6 +7,7 @@
 
 ?>
 <h1>Galleries</h1>
-<p>Display one galleries</p>
-
-<?php echo $gallery->getName(); ?>
+<p>Gallery: <?php echo $gallery->getName(); ?> </p>
+<?php foreach ($gallery->getListImages() as $img): ?>
+	<p><?php echo $img->getName(); ?>
+<?php endforeach; ?>

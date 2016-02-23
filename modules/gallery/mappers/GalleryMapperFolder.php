@@ -70,35 +70,23 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 	 */
 	private function loadGalleryImages($gallery){
 		global $imgExt;
-		$images = $this->scanDirWithExt($gallery->getName(), $imgExt);
-		$gallery->setListImages($images);
-		return True;
-	}
-
-	/**
-	 * Scan dir and return an array with all files with specific extension.
-	 *
-	 * Extensions are given in array parameter. If no parameter given, then
-	 * all extension are accepted. (. and .. are not include)
-	 * Dir is the path starting after $this->path (We are not allowed to check 
-	 * outside)
-	 *
-	 * @param string $dir			Dir to scan (relativ to gallery path)
-	 * @param array $extensions		Allowed extensions
-	 * @return array				Files found
-	 */
-	private function scanDirWithExt($dir, array $extensions = []){
-		global $imgExt;
-		$listFiles	= [];
-		$scan		= preg_grep("#^[^.]+#", scandir($this->path.$dir));
+		$listImgs	= [];
+		$order = 0;
+		$scan = preg_grep("#^[^.]+#", scandir($this->path.$gallery->getName()));
 		//Check for each if extension is allowed
 		foreach($scan as $file){
 			$ext = pathinfo($file, PATHINFO_EXTENSION);
 			if(in_array(strtolower($ext), $imgExt)){
-				$listFiles[] = $file;
+				$order++;
+				$img = new \modules\gallery\models\Image();
+				$img->setName($file);
+				$img->setGallery($gallery);
+				$img->setOrder($order);
+				$listImgs[] = $img;
 			}
 		}
-		return $listFiles;
+		$gallery->setListImages($listImgs);
+		return True;
 	}
 }
 
