@@ -23,7 +23,7 @@ class Page{
 	 *
 	 * @param String $content Path to the content template
 	 */
-	public function Page($content = null){
+	public function __construct($content = null){
 		$this->setContent($content);
 	}
 
