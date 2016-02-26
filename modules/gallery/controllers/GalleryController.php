@@ -24,6 +24,7 @@ class GalleryController extends \modules\core\controllers\EntityController{
 	public function showGalleries(){
 		$listGalleries = $this->mapper->selectAllGalleries();
 		$this->setView('listGalleries');
+		$this->page->addVar('pageTitle', "Galeries");
 		$this->page->addVar('listGalleries', $listGalleries);
 		$this->page->renderPage();
 	}
@@ -34,6 +35,7 @@ class GalleryController extends \modules\core\controllers\EntityController{
 			$this->page->renderErrorPage("Unknown Gallery");
 		}
 		$this->setView('displayGallery');
+		$this->page->addVar('pageTitle', "Galerie");
 		$this->page->addVar('gallery', $gallery);
 		$this->page->renderPage();
 	}

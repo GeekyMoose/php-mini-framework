@@ -7,14 +7,12 @@
  * Author:	Constantin MASSON
  */
 use \utils\database\DAOFactory;
-
 require './config.php';
 require '../utils/SplClassLoader.php';
 
 #Import and start autoloader for all elements
 $utilsLoader	= new SplClassLoader('utils', __DIR__.'/..');
 $utilsLoader	->register();
-
 $modulesLoader	= new SplClassLoader('modules', __DIR__.'/..');
 $modulesLoader	->register();
 

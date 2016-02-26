@@ -25,6 +25,8 @@ class Page{
 	 */
 	public function __construct($content = null){
 		$this->setContent($content);
+		$this->listVars['pathcss']	= PATH_CSS;
+		$this->listVars['pathjs']	= PATH_JS;
 	}
 
 

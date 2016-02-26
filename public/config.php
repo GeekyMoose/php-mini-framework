@@ -10,7 +10,8 @@ $DEBUG_MODE=TRUE;
 
 # Path configurations
 define('PATH_BASE', dirname(__FILE__).'/../'); #We are in public folder, not root
-define('PATH_CSS', '');
+define('PATH_CSS', dirname(__FILE__).'/css/');
+define('PATH_JS', dirname(__FILE__).'/js/');
 define('PATH_MODULES', PATH_BASE.'modules/');
 
 
