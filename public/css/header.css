@@ -1,0 +1,63 @@
+/* General rules */
+#site-header-wrap{
+	box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+	background: #303030;
+	color: #d9d9d9;
+}
+
+#site-header-title{
+	margin-left: 15px;
+	display:inline-block;
+	width: 30%;
+	font-size: 3em;
+}
+
+#site-header-navbar{
+	display:inline-block;
+}
+
+.toggle-navbar{
+	display:none;
+}
+
+/*
+
+
+/* Menu NavBar */
+@media screen and (min-width:869px){
+	#site-header-navbar{
+		width:60%;
+		padding:10px 20px;
+	}
+}
+
+#site-header-navbar ul{
+	display:inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+#site-header-navbar li{
+	display:inline-block;
+	width:200px;
+	text-align:center;
+	list-style:none;
+	font-size:17px;
+}
+
+#site-header-navbar a{
+	text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+	transition:color linear 0.15s;
+	transition:background-color linear 1.15;
+	color: #d9d9d9;
+	font-size:1.5em;
+}
+
+#site-header-navbar a:hover{
+	color: white;
+	background-color:#404040;
+}
+
+#site-header-navbar li:hover{
+}
+
