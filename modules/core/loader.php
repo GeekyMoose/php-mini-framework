@@ -16,3 +16,10 @@ $router->get("/", function(){
 	$page->renderPage();
 });
 
+//Home page (/ and /index are same)
+$router->get("/index", function(){
+	$page = new \modules\core\models\Page();
+	$page->setContent(PATH_MODULES.'core/views/home.phtml');
+	$page->renderPage();
+});
+

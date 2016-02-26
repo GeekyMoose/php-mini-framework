@@ -26,6 +26,14 @@ class Gallery extends \modules\core\models\Entity{
 	//*************************************************************************
 	// Functions
 	//*************************************************************************
+	/**
+	 * Check whether this gallery has photos inside
+	 *
+	 * @return Boolean True if empty, otherwise, return false
+	 */
+	public function isEmpty(){
+		return count($this->listImages) <= 0;
+	}
 
 
 	//*************************************************************************

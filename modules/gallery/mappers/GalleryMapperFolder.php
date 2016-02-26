@@ -9,6 +9,7 @@ namespace modules\gallery\mappers;
  */
 class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 	private $path;
+	private $pathMini;
 
 	/**
 	 * Create a new Folder mapper for Galleries.
@@ -16,7 +17,8 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 	 * @param string $path Path to data folder (Valided by Factory)
 	 */
 	public function __construct($path){
-		$this->path = $path;
+		$this->path		= $path.'full/';
+		$this->pathmini	= $path.'miniature/';
 	}
 
 	// ************************************************************************
@@ -32,6 +34,7 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 				$gallery = new \modules\gallery\models\Gallery();
 				$gallery->setId($id);
 				$gallery->setName($file);
+				$this->loadGalleryImages($gallery);
 				$listGalleries[] = $gallery; //Note images are not loaded
 			}
 		}
