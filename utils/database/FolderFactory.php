@@ -28,16 +28,22 @@ class FolderFactory extends \utils\database\DAOFactory{
 	 */
 	public function __construct(){
 		//Set each path (General path, imgs path)
-		$this->paths['data'] = PATH_DATA;
-		$this->paths['imgs'] = PATH_FOLDER_IMG;
+		$this->paths['imgs']	= PATH_IMG;
+		$this->paths['gallery']	= PATH_GALLERY;
 
 		//If not valid data base (Folder)
 		if(!$this->isValidDataFolder()){
 			//@TODO add log
+			ob_start();
+			echo '<pre>dirname: '.dirname(__FILE__);
+			var_dump($this->paths);
+			echo '</pre>';
+			$vard = ob_get_clean();
 			throw new \utils\database\DatabaseException(
 				"Unable to create the FolderFactory. Path given is not valid.
 				Check the path value in config.php.
 				Usually, data folder must have several specific subfolders."
+				.$vard
 			);
 		}
 	}
@@ -66,6 +72,6 @@ class FolderFactory extends \utils\database\DAOFactory{
 	// Mappers' Getters
 	// ************************************************************************
 	public function getGalleryMapper(){
-		return new \modules\gallery\mappers\GalleryMapperFolder($this->paths['imgs']);
+		return new \modules\gallery\mappers\GalleryMapperFolder($this->paths['gallery']);
 	}
 }

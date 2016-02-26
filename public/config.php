@@ -10,17 +10,19 @@ $DEBUG_MODE=TRUE;
 
 # Path configurations
 define('PATH_BASE', dirname(__FILE__).'/../'); #We are in public folder, not root
-define('PATH_CSS', dirname(__FILE__).'/css/');
-define('PATH_JS', dirname(__FILE__).'/js/');
 define('PATH_MODULES', PATH_BASE.'modules/');
+
+# Relatives path
+define('PATH_CSS', 'css/');
+define('PATH_JS', 'js/');
 
 
 // ****************************************************************************
 // Config for Folder database
 // ****************************************************************************
 # Path to data folder, img etc
-define('PATH_DATA', '/mnt/diskdata/work/data/wba/');
-define('PATH_FOLDER_IMG', '/mnt/diskdata/work/data/wba/imgs/');
+define('PATH_IMG', 'imgs/');
+define('PATH_GALLERY', PATH_IMG.'gallery/');
 $imgExt = array('jpeg', 'jpg', 'png'); //Write only lowercase
 
 // ****************************************************************************

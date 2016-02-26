@@ -27,6 +27,7 @@ class Page{
 		$this->setContent($content);
 		$this->listVars['pathcss']	= PATH_CSS;
 		$this->listVars['pathjs']	= PATH_JS;
+		$this->listVars['pathimg']	= PATH_IMG;
 	}
 
 
@@ -69,6 +70,7 @@ class Page{
 		}
 		$this->listVars[$name] = $value;
 	}
+
 
 	// ************************************************************************
 	// Getters - Setters

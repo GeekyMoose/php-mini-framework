@@ -38,11 +38,12 @@ try{
 	$router->run();
 }
 catch (\utils\router\RouterException $ex){
+	if($DEBUG_MODE==TRUE){ echo 'Debug msg: '.$ex->getMessage(); }
 	$page = new \modules\core\models\Page();
 	$page->renderErrorPage("This URL doesn't exists");
 }
 catch (\Exception $ex){
-	if($DEBUG_MODE==TRUE){ die($ex->getMessage()); }
+	if($DEBUG_MODE==TRUE){ die('Debug message: '.$ex->getMessage()); }
 	$page = new \modules\core\models\Page();
 	$page->renderErrorPage("An error has occured, sorry");
 }
