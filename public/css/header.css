@@ -14,6 +14,11 @@
 	font-size: 3em;
 }
 
+#site-header-title a{
+	color: #d9d9d9;
+	text-decoration:none;
+}
+
 #site-header-navbar{
 	display:inline-block;
 }

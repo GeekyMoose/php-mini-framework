@@ -8,8 +8,8 @@
 require_once PATH_MODULES.'core/views/partials/header.phtml';
 ?>
 
-<h1>Galleries</h1>
-<p>List galleries</p>
+
+<div class="wrapper-general-content">
 
 <?php if(empty($listGalleries)) :?>
 	<p>No gallery</p>
@@ -38,7 +38,8 @@ require_once PATH_MODULES.'core/views/partials/header.phtml';
 				</div>
 			</div>
 		<?php endforeach; ?>
-		</div>
+		</div><!-- End class row -->
+	</div><!-- End container-fluid -->
 <?php endif; ?>
 
-</div>
+</div><!-- End wrapper -->
