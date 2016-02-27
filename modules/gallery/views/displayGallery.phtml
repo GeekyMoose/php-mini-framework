@@ -6,8 +6,16 @@
  */
 require_once PATH_MODULES.'core/views/partials/header.phtml';
 ?>
-<h1>Galleries</h1>
-<p>Gallery: <?php echo $gallery->getName(); ?> </p>
+<div class="page-header">
+	<h1><?php echo $gallery->getName(); ?></h1>
+</div>
+
+<div class="row">
 <?php foreach ($gallery->getListImages() as $img): ?>
-	<p><?php echo $img->getName(); ?>
+	<div class="col-xs-4 col-md-3">
+		<a href="#" class="thumbnail">
+			<img src="<?php echo '/'.PATH_GALLERY.'full/'.$img->getName().'.'.$img->getExtension();?>" alt="...">
+		</a>
+	</div>
 <?php endforeach; ?>
+</div>

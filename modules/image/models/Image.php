@@ -16,6 +16,7 @@ class Image extends \modules\core\models\Entity{
 	private $description;
 	private $dateCreate;
 	private $dateUpdate;
+	private $extension;
 
 
 	// ************************************************************************
@@ -35,6 +36,9 @@ class Image extends \modules\core\models\Entity{
 	public function getDescription(){
 		return $this->description;
 	}
+	public function getExtension(){
+		return $this->extension;
+	}
 
 	public function setName($value){
 		$this->name = $value;
@@ -49,6 +53,12 @@ class Image extends \modules\core\models\Entity{
 	public function setDescription($value){
 		if(is_string($value)){
 			$this->description = $value;
+		}
+		return $this;
+	}
+	public function setExtension($value){
+		if(is_string($value)){
+			$this->extension = $value;
 		}
 		return $this;
 	}

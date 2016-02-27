@@ -73,16 +73,23 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 	 */
 	private function loadGalleryImages($gallery){
 		global $imgExt;
-		$listImgs	= [];
+		$listImgs = [];
 		$order = 0;
-		$scan = preg_grep("#^[^.]+#", scandir($this->path.$gallery->getName()));
+		//Recever all image (File with extension at the moment)
+		$scan = preg_grep("#^([^.]+\.\w+)+#", scandir($this->path.$gallery->getName()));
+
 		//Check for each if extension is allowed
 		foreach($scan as $file){
-			$ext = pathinfo($file, PATHINFO_EXTENSION);
+			$info	= pathinfo($file);
+			$ext	= $info['extension'];
+			$name	= $info['filename'];
+
+			//Check whether extension is acceptable
 			if(in_array(strtolower($ext), $imgExt)){
 				$order++;
 				$img = new \modules\gallery\models\Image();
-				$img->setName($file);
+				$img->setName($name);
+				$img->setExtension($ext);
 				$img->setGallery($gallery);
 				$img->setOrder($order);
 				$listImgs[] = $img;
