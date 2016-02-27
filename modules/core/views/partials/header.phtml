@@ -25,3 +25,12 @@
 	</div>
 </header>
 
+<script>
+	jQuery(document).ready(function(){
+		jQuery('.toggle-navbar').click(function(e){
+			jQuery(this).toggleClass('navbar-active');
+			jQuery('#site-header-navbar ul').toggleClass('navbar-active');
+			e.preventDefault();
+		});
+	});
+</script>
