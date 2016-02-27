@@ -2,6 +2,12 @@
 /*
  * Display one Gallery
  *
+ * DEV NOTE:
+ * The path for img is just horribly done in the ugliest way possible but, 
+ * I didn't have time for that. 
+ * To update later (Soo, atm, keep the '../' because the URL rewriting create
+ * an url /gallery/nb
+ *
  * Since Feb 23, 2016
  */
 require_once PATH_MODULES.'core/views/partials/header.phtml';
@@ -10,12 +16,14 @@ require_once PATH_MODULES.'core/views/partials/header.phtml';
 	<h1><?php echo $gallery->getName(); ?></h1>
 </div>
 
-<div class="row">
-<?php foreach ($gallery->getListImages() as $img): ?>
-	<div class="col-xs-4 col-md-3">
-		<a href="#" class="thumbnail">
-			<img src="<?php echo '/'.PATH_GALLERY.'full/'.$img->getName().'.'.$img->getExtension();?>" alt="...">
-		</a>
+<div class="container-fluid">
+	<div class="row">
+	<?php foreach ($gallery->getListImages() as $img): ?>
+		<div class="col-xs-4 col-md-3">
+			<a href="#" class="thumbnail">
+				<img src="<?php echo '../'.PATH_GALLERY.$gallery->getName().'/'.$img->getName().'.'.$img->getExtension();?>" alt="...">
+			</a>
+		</div>
+	<?php endforeach; ?>
 	</div>
-<?php endforeach; ?>
-</div>
+</div><!-- End Fluid container -->

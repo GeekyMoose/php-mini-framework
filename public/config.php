@@ -5,11 +5,17 @@
  * Since:	Feb 15, 2016
  * Author:	Constantin MASSON
  */
-$DEBUG_MODE=TRUE;
+
+// Set debug to true if work on localhost
+$DEBUG_MODE=FALSE;
+if($_SERVER['REMOTE_ADDR'] == '127.0.0.1'){
+	$DEBUG_MODE=TRUE;
+}
 
 
 # Path configurations
 define('PATH_BASE', dirname(__FILE__).'/../'); #We are in public folder, not root
+define('PATH_BASE_RELATIVE', '/annegrindamasson/');
 define('PATH_MODULES', PATH_BASE.'modules/');
 
 # Relatives path
