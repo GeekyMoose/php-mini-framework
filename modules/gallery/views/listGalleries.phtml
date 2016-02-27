@@ -25,12 +25,18 @@ require_once PATH_MODULES.'core/views/partials/header.phtml';
 
 		//Display each gallery
 		foreach ($listGalleries as $gallery): 
-			$links = $gallery->isEmpty() ? $pathimg.'welcome/image1.jpg' : $pathimg.'welcome/images1.jpg';
+
+			$link = $pathimg.'welcome/image1.jpg';
+			if(!$gallery->isEmpty()){
+				$img	= $gallery->getListImages()[0];
+				$link	= $pathimg.'gallery/'.$gallery->getName().'/'.$img->getName().'.'.$img->getExtension();
+			}
+
 			?>
 			<div class="col-xs-12 col-sm-6 col-md-4">
 				<div class="thumbnail">
 					<a href="/gallery/<?php echo $gallery->getId(); ?>">
-					<img src="<?php echo $pathimg.'/welcome/image1.jpg';?>" alt="<?php echo $gallery->getName(); ?>">
+					<img src="<?php echo $link;?>" alt="<?php echo $gallery->getName(); ?>">
 					</a>
 					<div class="caption">
 						<h3><?php echo $gallery->getName();?></h3>
