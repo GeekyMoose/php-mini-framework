@@ -13,8 +13,8 @@ define('PATH_BASE', dirname(__FILE__).'/../'); #We are in public folder, not roo
 define('PATH_MODULES', PATH_BASE.'modules/');
 
 # Relatives path
-define('PATH_CSS', 'css/');
-define('PATH_JS', 'js/');
+define('PATH_CSS', '/css/');
+define('PATH_JS', '/js/');
 
 
 // ****************************************************************************
