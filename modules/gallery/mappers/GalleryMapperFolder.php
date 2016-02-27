@@ -9,7 +9,6 @@ namespace modules\gallery\mappers;
  */
 class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 	private $path;
-	private $pathMini;
 
 	/**
 	 * Create a new Folder mapper for Galleries.
@@ -17,8 +16,7 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 	 * @param string $path Path to data folder (Valided by Factory)
 	 */
 	public function __construct($path){
-		$this->path		= $path.'full/';
-		$this->pathmini	= $path.'miniature/';
+		$this->path		= $path;
 	}
 
 	// ************************************************************************
@@ -27,9 +25,10 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 	public function selectAllGalleries(){
 		$listGalleries = [];
 		$id = 0;
+		//Scan all content except . and ..
 		$scan = preg_grep('#^([^.])#', scandir($this->path));
 		foreach($scan as $file){
-			if(is_dir($this->path.'/'.$file)){
+			if(is_dir($this->path.$file)){
 				$id++;
 				$gallery = new \modules\gallery\models\Gallery();
 				$gallery->setId($id);
@@ -46,7 +45,7 @@ class GalleryMapperFolder implements \modules\gallery\mappers\iGalleryMapper{
 		$currentPos = 0;
 		$scan = preg_grep('#^([^.])#', scandir($this->path));
 		foreach($scan as $file){
-			if(is_dir($this->path.'/'.$file)){
+			if(is_dir($this->path.$file)){
 				$currentPos++;
 				if($currentPos != $id){
 					continue; //If is not this id
