@@ -21,15 +21,16 @@ require_once PATH_MODULES.'core/views/partials/header.phtml';
 	<?php foreach ($gallery->getListImages() as $img): 
 
 		//Check the dev note to understand this ugly '../'
-		$imgPath = '../'.PATH_GALLERY.$gallery->getName().'/'.$img->getName().'.'.$img->getExtension();
+		$imgPathFull = '../'.PATH_GALLERY.$gallery->getName().'/'.$img->getName().'.'.$img->getExtension();
+		$imgPathMini = '../'.PATH_GALLERY.$gallery->getName().'/mini/'.$img->getName().'.'.$img->getExtension();
 		?>
 		<div class="col-xs-6 col-sm-4 col-md-2">
-			<a href="<?php echo $imgPath; ?>" 
+			<a href="<?php echo $imgPathFull; ?>" 
 				class="thumbnail" 
 				data-lightbox="<?php echo $gallery->getName();?>" 
 				data-title="<?php echo $img->getName(); ?>"
 			>
-				<img src="<?php echo $imgPath?>" alt="<?php echo $imgPath?>">
+				<img src="<?php echo $imgPathMini;?>" alt="<?php echo $imgPathMini;?>">
 			</a>
 		</div>
 	<?php endforeach; ?>

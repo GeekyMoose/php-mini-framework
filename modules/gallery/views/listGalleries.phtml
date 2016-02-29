@@ -28,15 +28,15 @@ require_once PATH_MODULES.'core/views/partials/header.phtml';
 
 			$link = $pathimg.'welcome/image1.jpg';
 			if(!$gallery->isEmpty()){
-				$img	= $gallery->getListImages()[0];
-				$link	= $pathimg.'gallery/'.$gallery->getName().'/'.$img->getName().'.'.$img->getExtension();
+				$img		= $gallery->getListImages()[0];
+				$linkMini	= $pathimg.'gallery/'.$gallery->getName().'/mini/'.$img->getName().'.'.$img->getExtension();
 			}
 
 			?>
 			<div class="col-xs-12 col-sm-4 col-md-2">
 				<div class="thumbnail">
 					<a href="/gallery/<?php echo $gallery->getId(); ?>">
-					<img src="<?php echo $link;?>" alt="<?php echo $gallery->getName(); ?>">
+					<img src="<?php echo $linkMini;?>" alt="<?php echo $gallery->getName(); ?>">
 					</a>
 					<div class="caption">
 						<h3><?php echo $gallery->getName();?></h3>
