@@ -23,7 +23,7 @@ require_once PATH_MODULES.'core/views/partials/header.phtml';
 		//Check the dev note to understand this ugly '../'
 		$imgPath = '../'.PATH_GALLERY.$gallery->getName().'/'.$img->getName().'.'.$img->getExtension();
 		?>
-		<div class="col-xs-4 col-md-3">
+		<div class="col-xs-6 col-sm-4 col-md-2">
 			<a href="<?php echo $imgPath; ?>" 
 				class="thumbnail" 
 				data-lightbox="<?php echo $gallery->getName();?>" 
