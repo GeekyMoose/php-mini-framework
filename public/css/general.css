@@ -19,3 +19,7 @@ html,body{
 .wrapper-general-content{
 	margin:20px;
 }
+
+ul{
+	list-style-type: none;
+}
