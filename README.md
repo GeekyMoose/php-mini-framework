@@ -1,11 +1,21 @@
-#Website - Anne Grinda
+# PHP mini framework
+- Feb 22, 2016
+- Web PHP backend framework
 
-##Description
-Anne Grinda official website.
 
-##Author
-Constantin MASSON
+# Description
+A PHP mini framework for image gallery website.
 
-##Informations:
-Date creation: Feb 22, 2016
-Last Update: March 2016
+
+# Features
+- Switching data base (using DAO pattern)
+    - Folder persistence
+    - MySQL database (Not implemented)
+- Routing and URL Rewriting
+- Modular
+    - Add new module in `module` folder
+    - Defines module's routes in `loader.php` file. (Automatically detected)
+
+
+# Author
+Constantin MASSON (geekymoose)
